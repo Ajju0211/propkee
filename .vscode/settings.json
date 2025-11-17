@@ -25,6 +25,9 @@
   //   "editor.defaultFormatter": "esbenp.prettier-vscode"
   // },
   "prettier.requireConfig": true,
+    "explorer.compactFolders": false,
+  "explorer.autoReveal": true,
+  "explorer.sortOrder": "default",
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": ["plaiceholder", "Strapi", "unoptimized"]
 }

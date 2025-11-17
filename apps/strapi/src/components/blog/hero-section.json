@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_blog_hero_sections",
+  "info": {
+    "displayName": "hero_section"
+  },
+  "options": {},
+  "attributes": {
+    "sub_title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blog_blog_content_rich_texts",
+  "info": {
+    "displayName": "blog_content_rich_text",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "rich_text": {
+      "type": "blocks"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "tables": {
+      "displayName": "tables",
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.tables"
+    }
+  }
+}

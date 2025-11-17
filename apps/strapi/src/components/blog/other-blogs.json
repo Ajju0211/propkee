@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blog_other_blogs",
+  "info": {
+    "displayName": "other_blogs"
+  },
+  "options": {},
+  "attributes": {
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
+    },
+    "heading": {
+      "type": "string"
+    }
+  }
+}

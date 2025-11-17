@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blog_tables",
+  "info": {
+    "displayName": "tables"
+  },
+  "options": {},
+  "attributes": {
+    "table": {
+      "type": "customField",
+      "customField": "plugin::table-field.table"
+    }
+  }
+}

@@ -1,67 +1,57 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva } from "class-variance-authority"
+'use client';
 
-import type { VariantProps } from "class-variance-authority"
+import { cn } from '@/utils/cn';
 
-import { cn } from "@/lib/styles"
+type ButtonProps = {
+  onClick?: () => void;
+  text?: string;
+  icon?: any;
+  children: string;
+  containerClass?: string;
+};
 
-import { Spinner } from "../elementary/Spinner"
-
-const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-  isLoading?: boolean
+function Button({ onClick, icon: Icon, text, children, containerClass }: ButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        `w-full h-full bg-black rounded-full gap-[0.5rem] py-[0.75rem] px-[1.25rem] flex items-center justify-center`,
+        containerClass,
+      )}
+    >
+      <div className="w-[1.5rem] h-[1.5rem]">
+        {Icon ? (
+          Icon
+        ) : (
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M21.5036 20.35C14.441 27.4003 -3.55048 9.72189 3.68329 2.54193C4.51475 1.7178 6.10921 1.93055 6.93334 2.76201V2.76446C7.74035 3.50056 8.10473 3.92362 8.81882 4.67684C9.64295 5.51074 9.67962 6.86555 8.84817 7.68968L7.43711 9.10072C5.69348 10.859 13.0715 18.2933 14.9081 16.5179L16.3216 15.1093C17.153 14.2852 18.5079 14.246 19.332 15.0775C20.0461 15.8307 20.5058 16.2391 21.2174 16.9923C22.0416 17.8238 22.335 19.5259 21.5036 20.35Z"
+              fill="white"
+            />
+          </svg>
+        )}
+      </div>
+      <div className="w-full h-full flex flex-col items-start justify-start">
+        {/* render icon if provided */}
+        {text && (
+          <p className="font-instrument-sans-500 text-nowrap leading-normal text-[0.75rem] text-white">
+            {text}
+          </p>
+        )}
+        <span className="blog-peragraph  text-white text-nowrap font-instrument-sans-700 ">
+          {children} {/* button label */}
+        </span>
+      </div>
+    </button>
+  );
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, isLoading, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-
-    if (isLoading) {
-      props.children = <Spinner className="h-4 w-4 border-2" />
-    }
-
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
-
-export { Button, buttonVariants }
+export default Button;

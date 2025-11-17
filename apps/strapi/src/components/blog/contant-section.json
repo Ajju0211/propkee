@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blog_contant_sections",
+  "info": {
+    "displayName": "contant_section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "sub_title": {
+      "type": "string"
+    },
+    "other_blogs": {
+      "displayName": "other_blogs",
+      "type": "component",
+      "repeatable": false,
+      "component": "blog.other-blogs"
+    }
+  }
+}

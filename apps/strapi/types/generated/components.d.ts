@@ -1,5 +1,87 @@
 import type { Schema, Struct } from "@strapi/strapi"
 
+export interface BlogBlogContentRichText extends Struct.ComponentSchema {
+  collectionName: "components_blog_blog_content_rich_texts"
+  info: {
+    description: ""
+    displayName: "blog_content_rich_text"
+  }
+  attributes: {
+    heading: Schema.Attribute.String
+    rich_text: Schema.Attribute.Blocks
+    tables: Schema.Attribute.Component<"blog.tables", true>
+  }
+}
+
+export interface BlogContantSection extends Struct.ComponentSchema {
+  collectionName: "components_blog_contant_sections"
+  info: {
+    displayName: "contant_section"
+  }
+  attributes: {
+    other_blogs: Schema.Attribute.Component<"blog.other-blogs", false>
+    sub_title: Schema.Attribute.String
+    title: Schema.Attribute.String
+  }
+}
+
+export interface BlogFaq extends Struct.ComponentSchema {
+  collectionName: "components_blog_faq_s"
+  info: {
+    displayName: "FAQ "
+  }
+  attributes: {
+    faq_content: Schema.Attribute.Component<"blog.faq-content", true>
+    heading: Schema.Attribute.String
+  }
+}
+
+export interface BlogFaqContent extends Struct.ComponentSchema {
+  collectionName: "components_blog_faq_content_s"
+  info: {
+    displayName: "faq_content "
+  }
+  attributes: {
+    answer: Schema.Attribute.Text
+    question: Schema.Attribute.String
+  }
+}
+
+export interface BlogHeroSection extends Struct.ComponentSchema {
+  collectionName: "components_blog_hero_sections"
+  info: {
+    displayName: "hero_section"
+  }
+  attributes: {
+    author_name: Schema.Attribute.String
+    description: Schema.Attribute.Text
+    image: Schema.Attribute.Media<"images" | "files" | "videos" | "audios">
+    sub_title: Schema.Attribute.String
+  }
+}
+
+export interface BlogOtherBlogs extends Struct.ComponentSchema {
+  collectionName: "components_blog_other_blogs"
+  info: {
+    displayName: "other_blogs"
+  }
+  attributes: {
+    blogs: Schema.Attribute.Relation<"oneToMany", "api::blog.blog">
+    heading: Schema.Attribute.String
+  }
+}
+
+export interface BlogTables extends Struct.ComponentSchema {
+  collectionName: "components_blog_tables"
+  info: {
+    displayName: "tables"
+  }
+  attributes: {
+    table: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<"plugin::table-field.table">
+  }
+}
+
 export interface ExampleExample extends Struct.ComponentSchema {
   collectionName: "components_example_examples"
   info: {
@@ -337,6 +419,13 @@ export interface SharedSeoTwitter extends Struct.ComponentSchema {
 declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
+      "blog.blog-content-rich-text": BlogBlogContentRichText
+      "blog.contant-section": BlogContantSection
+      "blog.faq": BlogFaq
+      "blog.faq-content": BlogFaqContent
+      "blog.hero-section": BlogHeroSection
+      "blog.other-blogs": BlogOtherBlogs
+      "blog.tables": BlogTables
       "example.example": ExampleExample
       "layout.navbar": LayoutNavbar
       "sections.animated-logo-row": SectionsAnimatedLogoRow

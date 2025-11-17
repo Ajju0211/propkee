@@ -369,6 +369,47 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
+  collectionName: "blogs"
+  info: {
+    description: ""
+    displayName: "Blog"
+    pluralName: "blogs"
+    singularName: "blog"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    blog_content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultMarkdown"
+        }
+      >
+    blog_content_rich_text: Schema.Attribute.Component<
+      "blog.blog-content-rich-text",
+      true
+    >
+    blogs_faqs: Schema.Attribute.Component<"blog.faq", false>
+    content_section: Schema.Attribute.Component<"blog.contant-section", false>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    hero_section: Schema.Attribute.Component<"blog.hero-section", false>
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::blog.blog"> &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<"title">
+    title: Schema.Attribute.String
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
 export interface ApiConfigurationConfiguration extends Struct.SingleTypeSchema {
   collectionName: "configurations"
   info: {
@@ -739,6 +780,10 @@ export interface PluginReviewWorkflowsWorkflow
       Schema.Attribute.Required &
       Schema.Attribute.Unique
     publishedAt: Schema.Attribute.DateTime
+    stageRequiredToPublish: Schema.Attribute.Relation<
+      "oneToOne",
+      "plugin::review-workflows.workflow-stage"
+    >
     stages: Schema.Attribute.Relation<
       "oneToMany",
       "plugin::review-workflows.workflow-stage"
@@ -1067,6 +1112,7 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
       "admin::user": AdminUser
+      "api::blog.blog": ApiBlogBlog
       "api::configuration.configuration": ApiConfigurationConfiguration
       "api::footer.footer": ApiFooterFooter
       "api::navbar.navbar": ApiNavbarNavbar

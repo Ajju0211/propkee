@@ -11,6 +11,12 @@ export default ({ env }) => {
       config: awsS3Config ?? localUploadConfig,
     },
 
+    // ADD THE PLUGIN HERE
+    // "strapi-table-field": {
+    //   enabled: true,
+    //   config: {},
+    // },
+
     seo: {
       enabled: true,
     },
