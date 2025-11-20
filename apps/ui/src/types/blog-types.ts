@@ -20,6 +20,7 @@ export interface AnchorItem {
 
 export interface PostItem {
   slug?: string;
+  description?: string;
   date?: string;
   title?: string;
   image?: string;

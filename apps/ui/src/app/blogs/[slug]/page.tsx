@@ -11,7 +11,13 @@ import SuggestionBlog from '@/components/blog/SuggestionBlog';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { getSingleBlogContent } from '@/api/blog/blog';
-import { BlogHero, ContentProps, FAQData, OtherPosts } from '@/types/blog-types';
+import {
+  BlogHero,
+  ContentProps,
+  FAQData,
+  OtherPosts,
+  PostItem,
+} from '@/types/blog-types';
 import { formatReadableDate } from '@/utils/formateDate';
 import httpClient from '@/api/httpClient';
 import BlogRichText from '@/components/blog/BlogRichText';
@@ -32,6 +38,8 @@ export default function Home() {
   const [faqs, setFaq] = useState<FAQData>();
   const [blogData, setBlogData] = useState();
 
+  const [trendingBlogs, setTrendingBlogs] = useState<PostItem[]>();
+
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -40,6 +48,8 @@ export default function Home() {
     const data = await getSingleBlogContent(slug);
     setBlogData(data?.blog_content_rich_text);
     setBlogContent(data?.blog_content);
+    console.log('Trending blogs: ', filterTrendingPosts(data));
+    setTrendingBlogs(filterTrendingPosts(data));
 
     const recentPosts = await httpClient.get(
       '/blogs?sort=createdAt:desc&pagination[limit]=3&populate[hero_section][populate]=*',
@@ -128,6 +138,18 @@ export default function Home() {
       postTitle: postTitle,
     };
   };
+
+  const filterTrendingPosts = (data: any) => {
+    const trendingPosts =
+      data?.trending_blogs?.map((item: any) => ({
+        slug: item?.slug,
+        date: formatReadableDate(item?.createdAt),
+        title: item?.title,
+        image: `http://localhost:1337${item?.hero_section?.image?.url}`,
+        description: item?.hero_section?.description,
+      })) || [];
+    return trendingPosts;
+  };
   const postData = contentSection?.otherPosts?.postItem || [];
   const otherPostsData = postData?.length > 0 ? contentSection?.otherPosts : recentPosts;
 
@@ -155,7 +177,7 @@ export default function Home() {
         {blogContent ? <BlogContent content={blogContent} /> : <BlogSkeleton />}
       </div>
       {faqs && <FAQS data={faqs} />}
-      <SuggestionBlog />
+      {trendingBlogs && <SuggestionBlog otherPosts={trendingBlogs} />}
       <div className="w-full px-[1.5rem] xl:px-[6.5rem]">
         <Footer />
       </div>

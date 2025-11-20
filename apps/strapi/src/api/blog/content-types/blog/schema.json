@@ -48,6 +48,11 @@
         "preset": "defaultMarkdown"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "trending_blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
     }
   }
 }

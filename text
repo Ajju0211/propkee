@@ -22,12 +22,6 @@ export function BlogContent({ content }: { content: string }) {
         remarkPlugins={[remarkGfm]} // tables, lists, markdown extras
         rehypePlugins={[rehypeRaw]} // allows HTML in markdown
         components={{
-          // h1: (props) => <h1 className="blog-h1 pt-[0.5rem]" {...props} />,
-          // h2: (props) => <h2 className="blog-h2 pt-[0.5rem]" {...props} />,
-          // h3: (props) => <h3 className="blog-h3 pt-[0.5rem]" {...props} />,
-          // h4: (props) => <h4 className="blog-h4 pt-[0.5rem]" {...props} />,
-          // h5: (props) => <h5 className="blog-h5 pt-[0.5rem]" {...props} />,
-          // h6: (props) => <h6 className="blog-h6 pt-[0.5rem]" {...props} />,
           h1: headingRenderer(1),
           h2: headingRenderer(2),
           h3: headingRenderer(3),
