@@ -7,11 +7,11 @@ interface FAQSProps {
 
 function FAQS({ data }: FAQSProps) {
   return (
-    <div className="flex py-[3.5rem] h-full lg:min-h-[67.75rem] flex-col px-[2rem] xl:px-[6.5rem] blog-bg-color-f4">
+    <div className="flex py-[3.5rem] h-full lg:min-h-[67.75rem] flex-col px-[1rem]  lg:px-[2rem] xl:px-[6.5rem] blog-bg-color-f4 gap-[16px]">
       <p className="blog-title">FAQs</p>
       <p className="blog-subTitle mt-[1rem]">{data?.title}</p>
 
-      <div className="w-full h-full flex flex-col gap-[1.5rem] lg:mt-[3.5rem]">
+      <div className="w-full h-full flex flex-col lg:gap-[1.5rem] gap-[24px] lg:mt-[3.5rem]">
         {data?.faqs?.map((item, idx) => (
           <div
             key={idx}

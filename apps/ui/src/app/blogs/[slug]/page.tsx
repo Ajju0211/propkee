@@ -70,6 +70,21 @@ export default function Home() {
     setFaq(faqs);
   };
 
+  //Extract "Markdown languag" H2 tag from the content
+
+  function extractH2Headings(markdown: string) {
+    const lines = markdown.split(/\r?\n/);
+
+    const h2 = lines
+      .map((line) => {
+        const match = line.match(/^###\s+(.*)$/); // only H3
+        return match ? match[1].trim() : null;
+      })
+      .filter(Boolean) as string[];
+
+    return h2;
+  }
+
   const filterDataForHeroSection = (data: any): BlogHero => {
     const heroSection = data?.hero_section;
 
@@ -90,9 +105,12 @@ export default function Home() {
   };
 
   const filterAnchoreTag = (data: any) => {
-    const anchoreTag = data?.blog_content_rich_text.map((item: any) => ({
-      title: item?.heading ?? '',
-      link: createIdFromTitle(item?.heading ?? ''),
+    const h2tag = extractH2Headings(data?.blog_content);
+    console.log(h2tag);
+    // data?.blog_content_rich_text
+    const anchoreTag = h2tag?.map((item: any) => ({
+      title: item ?? '',
+      link: createIdFromTitle(item ?? ''),
     }));
 
     const removedEmptyTag = anchoreTag.filter((item: any) => item?.title.trim() !== '');
@@ -132,8 +150,8 @@ export default function Home() {
   const otherPostsData = postData?.length > 0 ? contentSection?.otherPosts : recentPosts;
 
   return (
-    <div className="h-full   bg-white">
-      <div className="h-full px-[1.5rem] xl:px-[6.5rem]  w-full bg-white">
+    <div className="h-full bg-white">
+      <div className="h-full lg:px-[1.5rem] xl:px-[6.5rem] px-[16px] w-full bg-white">
         <Header />
         {/* <Breadcrumb /> */}
         <Breadcrumb

@@ -8,27 +8,24 @@ type Item = {
 
 export default function Breadcrumb({ items }: Item) {
   return (
-    <nav className="flex lg:my-[1.5rem] items-center justify-start flex-wrap sm:flex-nowrap overflow-x-auto">
-      {items.map((item: any, index: any) => (
-        <div
-          key={index}
-          className="flex items-center gap-[4px] sm:gap-[0.25rem] max-w-[120px] sm:max-w-none overflow-hidden"
-        >
+    <nav className="flex items-center lg:my-[1.5rem] whitespace-nowrap overflow-x-auto">
+      {items.map((item: any, index: number) => (
+        <div key={index} className="flex items-center sm:gap-2 min-w-0">
           {index !== 0 && (
-            <ChevronRight className="w-4 h-4 mx-2 text-[#00193BE5]/80 shrink-0" />
+            <ChevronRight className="w-4 h-4 mx-1 text-[#00193BE5]/80 shrink-0" />
           )}
 
           {item.href ? (
             <Link
               href={item.href}
-              className="truncate overflow-hidden whitespace-nowrap blog-smallHeading"
-              title={item.label} // tooltip on hover
+              className="blog-smallHeading truncate max-w-[200px] sm:max-w-none"
+              title={item.label}
             >
               {item.label}
             </Link>
           ) : (
             <span
-              className="truncate overflow-hidden whitespace-nowrap blog-smallHeading"
+              className="blog-smallHeading truncate max-w-[200px] sm:max-w-none"
               title={item.label}
             >
               {item.label}

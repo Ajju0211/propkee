@@ -17,7 +17,9 @@ export function BlogContent({ content }: { content: string }) {
     );
   };
   return (
-    <div className="w-full h-full px-[2rem] py-[2.5rem] xl:py-[5.5rem] xl:px-[6.5rem]">
+    <div className="w-full h-full px-[1rem] lg:px-[2rem] py-[2.5rem] xl:py-[5.5rem] xl:px-[6.5rem] flex flex-col gap-[24px]">
+      {' '}
+      {/* 24px/1.5 rem gap*/}
       <ReactMarkdown
         remarkPlugins={[remarkGfm]} // tables, lists, markdown extras
         rehypePlugins={[rehypeRaw]} // allows HTML in markdown

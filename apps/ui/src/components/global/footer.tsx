@@ -35,7 +35,7 @@ function Footer() {
     <div className="flex w-full flex-col gap-[2.6rem] items-start justify-start py-[4rem] ">
       <div className="w-full flex flex-col items-start justify-start">
         {/* Logo */}
-        <div className=" flex items-start justify-start h-[2.9375rem]">
+        <div className=" flex items-start justify-start lg:h-[2.9375rem] h-[32px] w-[131px]">
           <Image
             alt="logo"
             height={50}
@@ -45,10 +45,10 @@ function Footer() {
           />
         </div>
         {/* Footer Data  */}
-        <div className="w-full mt-[3.5rem] mb-[4rem] flex items-center justify-between">
+        <div className="w-full mt-[3.5rem] mb-[4rem] flex flex-col sm:flex-row gap-[40px] items-center justify-between">
           {footerdata.map((item, idx) => (
             <div className="w-full max-w-[37.2813rem] flex flex-col gap-[0.75rem]">
-              <span className="blog-description font-instrument-sans-600 tracking-[-0.0075rem] text-[#231E18] text-nowrap">
+              <span className="lg:blog-description blog-footertitle font-instrument-sans-600 tracking-[-0.0075rem] text-[#231E18] text-nowrap">
                 {item?.title}
               </span>
               <p className="blog-peragraph text-[#515151]">{item?.address}</p>
@@ -80,7 +80,7 @@ function Footer() {
 
             <div className="flex flex-col md:flex-row items-start justify-start gap-[1rem]">
               {' '}
-              <Button
+              {/* <Button
                 containerClass="max-w-[12.25rem] h-fit flex items-center justify-center py-[0.5rem] px-[1.8rem]"
                 icon={
                   <div className="w-[1.5rem] h-[1.5rem]">
@@ -112,25 +112,27 @@ function Footer() {
                 text="Get it on"
               >
                 Google Play
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
       </div>
 
       {/* Coppyright */}
-      <div className=" relative py-[2.12rem] w-full flex  flex-col gap-[0.87rem] items-center  xl:flex-row ">
+      <div className=" relative py-[2.12rem] w-full flex flex-col xl:flex-row gap-[0.87rem] lg:items-center item-start  ">
         <div className="absolute h-px bg-[#929292] top-0 w-full"></div>
         <div className="absolute h-px bg-[#929292] bottom-0 w-full"></div>
-        <p className="md:text-nowrap">{copyright?.text}</p>
-        <div className="flex  items-center gap-4">
+        <p className="md:text-nowrap text-[#303030] blog-copyright">{copyright?.text}</p>
+        <div className="flex md:flex-row flex-col item-start md:items-center gap-4">
           {copyright.links.map((item, index) => (
             <div key={item.label} className="flex items-center gap-4">
               {/* Render separator only between items */}
-              {index != -1 && <span className="block h-[1.8125rem] w-px bg-gray-300" />}
+              {index != -1 && (
+                <span className="hidden md:block h-[1.8125rem] w-px bg-gray-300" />
+              )}
               <a
                 href={item?.href}
-                className="text-nowrap text-[#686868] sm:blog-smallHeading text-[0.5rem]"
+                className="text-nowrap text-[#686868] sm:blog-smallHeading text-[0.75rem]"
               >
                 {item?.label}
               </a>

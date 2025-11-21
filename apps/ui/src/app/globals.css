@@ -108,6 +108,69 @@
   --blog-bg-color-f4: #f4f4f6;
 }
 
+@media (max-width: 769px) {
+  :root {
+    /* Headings */
+    --h1: 1.5rem; /* Already good */
+    --h2: 1.75rem; /* 2rem → 1.75rem */
+    --h3: 1.5rem; /* 1.75rem → 1.5rem */
+    --h4: 1.25rem; /* 1.5rem → 1.25rem */
+    --h5: 1.125rem; /* Already fine */
+    --h6: 1rem; /* 1.125rem → 1rem */
+
+    /* Line heights */
+    --lh-h1: 2rem;
+    --lh-h2: 2.1rem; /* Slightly lower */
+    --lh-h3: 1.9rem;
+    --lh-h4: 1.6rem;
+    --lh-h5: 1.4rem;
+    --lh-h6: 1.3rem;
+
+    /* Blog Font Sizes */
+    --text-blog-title-size: 1.4rem; /* 1.5rem → 1.4rem */
+    --text-blog-title-line-height: 125%;
+
+    --text-blog-h2-size: 1.5rem; /* 1.75rem → 1.5rem */
+    --text-blog-h2-line-height: 1.9rem;
+
+    --text-blog-subtitle-size: 1.125rem; /* 16px */
+    --text-blog-subtitle-line-height: 1.7rem;
+
+    --text-blog-description-size: 1rem; /* Slightly smaller */
+    --text-blog-description-line-height: 155%;
+
+    --text-blog-smalltitle-size: 1rem; /* 1rem → 0.75rem (12px) */
+    --text-blog-smalltitle-line-height: 125%;
+
+    --text-blog-p-size: 1rem; /* 1.125rem → 1rem */
+    --text-blog-p-line-height: 150%;
+
+    --text-blog-tiny-size: 0.7rem; /* 0.75rem → 0.7rem */
+    --text-blog-line-height: 1rem;
+
+    --text-blog-small-size: 0.8rem; /* 0.875rem → 0.8rem */
+    --text-blog-small-line-height: 130%;
+
+    --text-footertitle-size: 1.25rem;
+    --text-footertitle-line-height: 130%;
+
+    --text-blog-copyright-size: 0.75rem; /* 12px */
+    --text-blog-copyright-line-height: 120%;
+
+    /* Blog Color (unchanged) */
+    --text-blog-color-primary: #1a1a1a;
+    --text-blog-color-48: #484848;
+    --text-blog-color-70: #707070;
+    --text-blog-color-85: #858585;
+    --text-blog-color-D1: #d1d1d1;
+    --text-blog-color-E8: #e8e8e8;
+    --blog-table-color: #bf8b50;
+
+    --blog-bg-color-f1: #f1eeeb;
+    --blog-bg-color-f4: #f4f4f6;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -256,6 +319,21 @@ body {
   line-height: var(--text-blog-smalltitle-line-height);
   font-style: normal;
   color: #515151;
+}
+
+@utility blog-footertitle {
+  font-size: var(--text-footertitle-size);
+  font-family: var(--font-instrument-sans-500);
+  line-height: var(--text-footertitle-line-height);
+  font-style: normal;
+  color: #515151;
+}
+
+@utility blog-copyright {
+  font-size: var(--text-blog-copyright-size);
+  font-family: var(--font-instrument-sans-400);
+  font-style: normal;
+  color: var(--text-blog-color-70);
 }
 
 .hide-scrollbar {

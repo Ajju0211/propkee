@@ -33,20 +33,20 @@ function SuggestionBlog() {
   ];
 
   return (
-    <div className="w-full md:py-[5.5rem]  bg-[#F9F9FB] h-full flex flex-col items-start justify-start px-[2rem] xl:px-[6.5rem]">
+    <div className="w-full md:py-[5.5rem] py-4 bg-[#F9F9FB] h-full flex flex-col items-start justify-start px-[1rem] xl:px-[6.5rem]">
       <span className="blog-title">Trending Blogs</span>
       <p className="blog-subTitle mt-[0.62rem]">
         Lorem ipsum dolor sit amet consectetur. In.
       </p>
 
-      <div className="w-full h-full md:mt-[3.5rem] overflow-hidden">
-        <div className="w-full flex items-start hide-scrollbar justify-start md:gap-[1.5rem] h-full overflow-x-scroll">
+      <div className="w-full h-full mt-[2rem] md:mt-[3.5rem] overflow-hidden">
+        <div className="w-full flex flex-col sm:flex-row items-start hide-scrollbar justify-start gap-[1.5rem] gap-2 h-full overflow-x-scroll">
           {otherPosts?.map((item, idx) => (
             <div
               key={idx}
-              className="flex p-[0.75rem] flex-col w-full min-w-[18.1406rem] h-full gap-[0.75rem] items-center border-[2px] justify-start rounded-[1.5rem]  border-[#E9E9E9]"
+              className="flex p-[0.75rem] flex-col w-full min-w-[18.1406rem] min-h-auto lg:min-h-[20rem] md:min-h-[auto] gap-[0.75rem] items-center border-[2px] justify-start rounded-[1.5rem] border-[#E9E9E9]"
             >
-              <div className="w-full relative h-full overflow-hidden max-h-[8.75rem] rounded-[1.125rem]">
+              <div className="w-full relative overflow-hidden max-h-[8.75rem] rounded-[1.125rem]">
                 <img
                   alt="image"
                   src={item.image}
@@ -58,7 +58,7 @@ function SuggestionBlog() {
                   </span>
                 </div>
               </div>
-              <div className="w-full flex flex-col items-center justify-start gap-[0.5rem] h-full">
+              <div className="w-full flex flex-col item-start lg:items-center justify-start gap-[0.5rem] h-full">
                 <p className="blog-smallHeading font-instrument-sans-600 text-black line-clamp-2">
                   {item.title}
                 </p>

@@ -1,8 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FaPhone } from 'react-icons/fa';
-
+import { HiOutlineMenuAlt4 } from 'react-icons/hi';
 import Button from '../ui/button';
 
 function Header() {
@@ -13,30 +12,37 @@ function Header() {
   };
 
   return (
-    <div className="w-full h-full max-h-[6.5rem]   py-[1.5rem] flex items-center justify-between">
-      <div className="w-full max-w-[13.25rem] h-[3.5rem]">
+    <header className="w-full py-4 flex items-center justify-between">
+      {/* Logo */}
+      <div className="h-[32px] w-[121px] sm:h-[40px] sm:w-[150px] flex-shrink-0">
         <Image
           alt="logo"
           height={50}
-          width={50}
-          src={'/assets/logo.svg'}
-          className="w-full h-full"
+          width={150}
+          src="/assets/logo.svg"
+          className="w-full h-full object-contain"
         />
       </div>
-      <div className="h-full flex items-center justify-center gap-[0.75rem]">
+
+      {/* Desktop Menu */}
+      <nav className="hidden lg:flex items-center gap-6">
         {header.map((item, idx) => (
-          <div
-            key={idx}
-            className="blog-description hidden lg:block text-nowrap py-[0.88rem] px-[1.5rem]"
-          >
+          <div key={idx} className="blog-description py-2 px-4 whitespace-nowrap">
             {item}
           </div>
         ))}
-      </div>
-      <div>
+      </nav>
+
+      {/* Desktop Button */}
+      <div className="hidden sm:block">
         <Button onClick={handleClick}>Contact Us</Button>
       </div>
-    </div>
+
+      {/* Mobile Hamburger */}
+      <button className="sm:hidden flex items-center">
+        <HiOutlineMenuAlt4 size={28} />
+      </button>
+    </header>
   );
 }
 

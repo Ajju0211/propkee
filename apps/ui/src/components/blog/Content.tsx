@@ -14,13 +14,13 @@ function Content({
     }
   };
   return (
-    <div className="w-full px-[2rem] xl:px-[6.5rem] py-[3.5rem] md:min-h-[41.875rem] h-full blog-bg-color-f1 lg:mt-[5.5rem]">
-      <div className="w-full flex flex-col lg:gap-[1rem] items-start justify-start">
+    <div className="w-full px-[1rem] lg:px-[2rem] xl:px-[6.5rem] py-[3.5rem] md:min-h-[41.875rem] h-full blog-bg-color-f1 lg:mt-[5.5rem]">
+      <div className="w-full flex flex-col gap-[24px] lg:gap-[1rem] items-start justify-start">
         <h3 className="blog-title">{mainTitle || ''}</h3>
         <p className="blog-subTitle">{subTitle || ''}</p>
       </div>
 
-      <div className="flex flex-col sm:flex-row w-full justify-between lg:mt-[3.5rem]">
+      <div className="flex flex-col gap-[32px] sm:flex-row w-full justify-between lg:mt-[3.5rem]">
         {/* LEFT LIST */}
         <div className="flex w-full max-w-[48rem] flex-col justify-start items-start">
           <ul className="flex w-full flex-col gap-4">
@@ -41,7 +41,7 @@ function Content({
         </div>
 
         {/* RIGHT RECENT POSTS */}
-        <div className="w-full max-w-[24.0625rem] flex flex-col gap-[1rem]">
+        <div className="w-full md:max-w-[24.0625rem] max-w-full  flex flex-col gap-[1rem]">
           <span className="blog-subTitle font-instrument-sans-700 blog-text-primary">
             {otherPosts?.postTitle || 'Recent Posts'}
           </span>
