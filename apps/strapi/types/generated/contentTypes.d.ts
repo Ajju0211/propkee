@@ -465,6 +465,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime
     slug: Schema.Attribute.UID<"title">
     title: Schema.Attribute.String
+    trending_blogs: Schema.Attribute.Relation<"oneToMany", "api::blog.blog">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private

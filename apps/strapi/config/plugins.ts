@@ -1,3 +1,5 @@
+import NoTableNormalization from "../src/plugins/ckeditor/custom/NoTableNormalization"
+
 export default ({ env }) => {
   const awsS3Config = prepareAwsS3Config(env)
   if (!awsS3Config) {
@@ -15,8 +17,7 @@ export default ({ env }) => {
     // "strapi-table-field": {
     //   enabled: true,
     //   config: {},
-    // },
-
+    // }
     seo: {
       enabled: true,
     },
