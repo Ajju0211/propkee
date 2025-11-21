@@ -8,11 +8,21 @@ function Content({
   subTitle = 'Explore top-rated apartments with spacious layouts, modern amenities, and convenient access.',
 }: ContentProps) {
   const handleScroll = (id: string) => {
-    const element = document.getElementById(id);
+    // Remove # if present and clean the ID
+    const cleanId = id.replace('#', '').trim();
+    const element = document.getElementById(cleanId);
+
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    } else {
+      console.warn(`Element with ID "${cleanId}" not found`);
     }
   };
+
   return (
     <div className="w-full px-[1rem] lg:px-[2rem] xl:px-[6.5rem] py-[3.5rem] md:min-h-[41.875rem] h-full blog-bg-color-f1 lg:mt-[5.5rem]">
       <div className="w-full flex flex-col gap-[24px] lg:gap-[1rem] items-start justify-start">

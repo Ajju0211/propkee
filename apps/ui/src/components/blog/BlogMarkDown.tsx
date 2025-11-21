@@ -69,7 +69,7 @@ export function BlogContent({ content }: { content: string }) {
           ),
           td: (props) => (
             <td
-              className="blog-description  text-start px-[1.5rem] h-full md:min-h-[4.625rem] py-[0.75rem] border-[2px] border-[#EAEBF0] font-instrument-sans-500  text-[#5F6D7E] "
+              className="blog-description  text-start px-[1.5rem] h-full md:min-h-[4.625rem] py-[0.75rem] border-[2px] border-[#EAEBF0] font-instrument-sans-500  text-[#5F6D7E]"
               {...props}
             />
           ),

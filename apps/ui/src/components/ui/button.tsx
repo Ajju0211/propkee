@@ -20,11 +20,11 @@ function Button({ onClick, icon: Icon, text, children, containerClass }: ButtonP
           w-full h-full bg-black rounded-full 
           flex items-center justify-center gap-[0.5rem] 
           py-[0.75rem] px-[1.25rem]
-          max-md:w-[153px]       
-          max-md:h-[48px]
-          max-md:py-[8px]
-          max-md:px-[16px]
-          max-md:gap-[12px]
+          max-lg:w-[153px]       
+          max-lg:h-[48px]
+          max-lg:py-[8px]
+          max-lg:px-[16px]
+          max-lg:gap-[12px]
         `,
         containerClass,
       )}
@@ -51,13 +51,13 @@ function Button({ onClick, icon: Icon, text, children, containerClass }: ButtonP
         )}
       </div>
 
-      <div className="w-full h-full flex flex-col items-start justify-start">
+      <div className="w-full h-full flex flex-col items-start justify-center">
         {/* Small screen fonts smaller */}
         {text && (
           <p
             className="font-instrument-sans-500 text-white whitespace-nowrap 
-                        text-[11px] max-md:text-[10px] 
-                        md:text-[14px] leading-normal"
+                        text-[11px] max-lg:text-[10px] 
+                        lg:text-[14px] leading-normal"
           >
             {text}
           </p>
@@ -66,7 +66,7 @@ function Button({ onClick, icon: Icon, text, children, containerClass }: ButtonP
         {/* Main label */}
         <span
           className="blog-peragraph text-white whitespace-nowrap font-instrument-sans-700
-                        text-[16px] max-md:text-[13px] md:text-[18px]"
+                        text-[16px] max-lg:text-[13px] lg:text-[18px]"
         >
           {children}
         </span>

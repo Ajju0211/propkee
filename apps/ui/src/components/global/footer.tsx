@@ -78,9 +78,9 @@ function Footer() {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-start justify-start gap-[1rem]">
+            <div className="hidden md:flex flex flex-col md:flex-row items-start justify-start gap-[1rem]">
               {' '}
-              {/* <Button
+              <Button
                 containerClass="max-w-[12.25rem] h-fit flex items-center justify-center py-[0.5rem] px-[1.8rem]"
                 icon={
                   <div className="w-[1.5rem] h-[1.5rem]">
@@ -112,7 +112,7 @@ function Footer() {
                 text="Get it on"
               >
                 Google Play
-              </Button> */}
+              </Button>
             </div>
           </div>
         </div>
