@@ -40,19 +40,19 @@ export function BlogContent({ content }: { content: string }) {
           p: (props) => <p className="blog-description pt-[0.5rem]" {...props} />,
           ul: (props) => (
             <ul
-              className="mt-4 mb-4 pl-6 list-disc list-inside  blog-description "
+              className="mt-4 mb-4 pl-6 list-disc list-inside blog-description "
               {...props}
             />
           ),
           ol: (props) => (
             <ol
-              className="mt-4 mb-4 pl-6 list-decimal list-inside  blog-description "
+              className="mt-4 mb-4 pl-6 list-decimal list-inside blog-description "
               {...props}
             />
           ),
           li: (props) => <li className="mb-1 pl-1" {...props} />,
           table: (props) => (
-            <div className="overflow-x-auto w-full my-6  rounded-[1.5rem] border bg-white border-[#EAEAEA]">
+            <div className="overflow-x-auto w-full my-6 rounded-[1.5rem] border bg-white border-[#EAEAEA]">
               <table
                 className="w-full rounded-[1.5rem] border bg-white border-[#EAEAEA]"
                 {...props}
