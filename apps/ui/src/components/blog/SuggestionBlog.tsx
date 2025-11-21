@@ -15,7 +15,7 @@ function SuggestionBlog({ otherPosts }: { otherPosts: PostItem[] }) {
 
   return (
     <div className="w-full md:py-[5.5rem] py-4 bg-[#F9F9FB] h-full flex flex-col items-start justify-start px-[1rem] xl:px-[6.5rem]">
-      <span className="blog-title">Trending Blogs</span>
+      <span className="md:blog-title text-[24px]">Trending Blogs</span>
       <p className="blog-subTitle mt-[0.62rem]">
         Lorem ipsum dolor sit amet consectetur. In.
       </p>

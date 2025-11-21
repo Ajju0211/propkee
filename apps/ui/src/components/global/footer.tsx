@@ -62,10 +62,10 @@ function Footer() {
           <div className="w-full flex flex-col md:flex-row">
             <div className="w-full flex flex-col">
               <p>
-                <span className="blog-description font-instrument-sans-600 text-[#515151]">
+                <span className="md:blog-description text-[] font-instrument-sans-600 text-[#515151]">
                   Reach out at 
                 </span>
-                <strong className="blog-description text-black font-instrument-sans-600">
+                <strong className="md:blog-description text-black font-instrument-sans-600">
                   talktous@propkee.com
                 </strong>
               </p>

@@ -30,7 +30,7 @@ function Content({
         <p className="blog-subTitle">{subTitle || ''}</p>
       </div>
 
-      <div className="flex flex-col gap-[32px] sm:flex-row w-full justify-between lg:mt-[3.5rem]">
+      <div className="flex flex-col gap-[32px] lg:flex-row w-full justify-between lg:mt-[3.5rem]">
         {/* LEFT LIST */}
         <div className="flex w-full max-w-[48rem] flex-col justify-start items-start">
           <ul className="flex w-full flex-col gap-4">
@@ -52,7 +52,7 @@ function Content({
 
         {/* RIGHT RECENT POSTS */}
         <div className="w-full md:max-w-[24.0625rem] max-w-full  flex flex-col gap-[1rem]">
-          <span className="blog-subTitle font-instrument-sans-700 blog-text-primary">
+          <span className="md:blog-subTitle text-[24px] font-instrument-sans-700 blog-text-primary">
             {otherPosts?.postTitle || 'Recent Posts'}
           </span>
 

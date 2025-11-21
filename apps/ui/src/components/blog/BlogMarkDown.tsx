@@ -63,7 +63,7 @@ export function BlogContent({ content }: { content: string }) {
           thead: (props) => <thead className="bg-[#BF8B50] " {...props} />,
           th: (props) => (
             <th
-              className="blog-subTitle text-start md:min-h-[4rem] py-[1rem] px-[1.5rem] border-[2px] border-[#EAEBF0] text-white"
+              className="md:blog-subTitle text-[20px] text-start md:min-h-[4rem] py-[1rem] px-[1.5rem] border-[2px] border-[#EAEBF0] text-white"
               {...props}
             />
           ),
