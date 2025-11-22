@@ -70,6 +70,10 @@ export default function Home() {
     setHeroSection(heroSectionData);
     console.log('Blogs Data : ', data);
 
+    const tableData = parseMarkdownTable(data?.blog_content);
+
+    console.log('Tablet data Json: ', tableData);
+
     const anchoreTagData = filterAnchoreTag(data);
     const otherPosts = otherPostsFilterData(data);
     setContentSection({
@@ -140,6 +144,137 @@ export default function Home() {
       faqs: faqs,
     };
   };
+
+  function parseHtmlTable(html: string): any {
+    const wrapper = globalThis.document ? document.createElement('div') : null;
+
+    if (!wrapper) return null;
+
+    wrapper.innerHTML = html.trim();
+    const table = wrapper.querySelector('table');
+    if (!table) return null;
+
+    function formatCell(node: HTMLElement | ChildNode): any {
+      const formats: string[] = [];
+      let text = node.textContent?.trim() || '';
+
+      if (node.nodeType === 1) {
+        const el = node as HTMLElement;
+
+        if (el.tagName === 'B' || el.tagName === 'STRONG') formats.push('bold');
+        if (el.tagName === 'I' || el.tagName === 'EM') formats.push('italic');
+        if (el.tagName === 'CODE') formats.push('inlineCode');
+        if (el.tagName === 'A') {
+          formats.push('link');
+          return {
+            text,
+            format: formats,
+            url: el.getAttribute('href') || '',
+          };
+        }
+      }
+
+      return { text, format: formats };
+    }
+
+    function parseRow(row: HTMLTableRowElement) {
+      const cells = row.querySelectorAll('th, td');
+      return Array.from(cells).map((cell) => {
+        const children = Array.from(cell.childNodes);
+
+        if (children.length === 1) {
+          return formatCell(children[0]);
+        }
+
+        return {
+          text: cell.textContent?.trim() || '',
+          format: [],
+        };
+      });
+    }
+
+    const headers: any[] = [];
+    const rows: any[] = [];
+
+    const thead = table.querySelector('thead');
+    const tbody = table.querySelector('tbody');
+
+    if (thead) {
+      const headerRows = thead.querySelectorAll('tr');
+      headerRows.forEach((tr) => headers.push(...parseRow(tr)));
+    }
+
+    if (tbody) {
+      const bodyRows = tbody.querySelectorAll('tr');
+      bodyRows.forEach((tr) => rows.push(parseRow(tr)));
+    }
+
+    return { headers, rows };
+  }
+
+  function parseMarkdownTable(md: string): any {
+    function parseFormatting(cell: string): any {
+      const formats: string[] = [];
+      let text = cell.trim();
+
+      // Bold: **text**
+      if (/^\*\*(.+?)\*\*$/.test(text)) {
+        formats.push('bold');
+        text = text.replace(/^\*\*(.+?)\*\*$/, '$1');
+      }
+
+      // Italic: *text*
+      if (/^\*(.+?)\*$/.test(text)) {
+        formats.push('italic');
+        text = text.replace(/^\*(.+?)\*$/, '$1');
+      }
+
+      // Inline code: `text`
+      if (/^`(.+?)`$/.test(text)) {
+        formats.push('inlineCode');
+        text = text.replace(/^`(.+?)`$/, '$1');
+      }
+
+      // Link: [text](url)
+      const linkRegex = /^\[(.+?)\]\((.+?)\)$/;
+      if (linkRegex.test(text)) {
+        const match = text.match(linkRegex);
+        return {
+          text: match?.[1] || '',
+          format: [...formats, 'link'],
+          url: match?.[2] || '',
+        };
+      }
+
+      return { text, format: formats };
+    }
+
+    const lines = md
+      .trim()
+      .split('\n')
+      .filter((l) => l.trim() !== '');
+    if (lines.length < 3) return null;
+
+    const headerCells = lines[0]
+      .split('|')
+      .map((c) => c.trim())
+      .filter(Boolean);
+
+    const bodyLines = lines.slice(2);
+
+    const headers = headerCells.map((c) => parseFormatting(c));
+
+    const rows = bodyLines.map((line) => {
+      const cells = line
+        .split('|')
+        .map((c) => c.trim())
+        .filter(Boolean);
+
+      return cells.map((c) => parseFormatting(c));
+    });
+
+    return { headers, rows };
+  }
 
   const otherPostsFilterData = (data: any) => {
     const otherPosts =
