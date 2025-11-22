@@ -283,7 +283,7 @@ export default function Home() {
         slug: item?.slug,
         date: formatReadableDate(item?.createdAt),
         title: item?.title,
-        image: `${process.env.NEXT_PUBLIC_IMAGE_URL}item?.hero_section?.image?.url`,
+        image: `${process.env.NEXT_PUBLIC_IMAGE_URL}${item?.hero_section?.image?.url}`,
       })) || [];
 
     const postTitle = data?.content_section?.other_blogs?.heading;
