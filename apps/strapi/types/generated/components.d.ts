@@ -13,6 +13,18 @@ export interface BlogBlogContentRichText extends Struct.ComponentSchema {
   }
 }
 
+export interface BlogBlogFaqs extends Struct.ComponentSchema {
+  collectionName: "components_blog_blog_faqs"
+  info: {
+    description: ""
+    displayName: "blog_faqs"
+  }
+  attributes: {
+    faq: Schema.Attribute.Component<"blog.faqs", true>
+    heading: Schema.Attribute.String
+  }
+}
+
 export interface BlogContantSection extends Struct.ComponentSchema {
   collectionName: "components_blog_contant_sections"
   info: {
@@ -40,6 +52,17 @@ export interface BlogFaqContent extends Struct.ComponentSchema {
   collectionName: "components_blog_faq_content_s"
   info: {
     displayName: "faq_content "
+  }
+  attributes: {
+    answer: Schema.Attribute.Text
+    question: Schema.Attribute.String
+  }
+}
+
+export interface BlogFaqs extends Struct.ComponentSchema {
+  collectionName: "components_blog_faqs"
+  info: {
+    displayName: "faqs"
   }
   attributes: {
     answer: Schema.Attribute.Text
@@ -420,9 +443,11 @@ declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
       "blog.blog-content-rich-text": BlogBlogContentRichText
+      "blog.blog-faqs": BlogBlogFaqs
       "blog.contant-section": BlogContantSection
       "blog.faq": BlogFaq
       "blog.faq-content": BlogFaqContent
+      "blog.faqs": BlogFaqs
       "blog.hero-section": BlogHeroSection
       "blog.other-blogs": BlogOtherBlogs
       "blog.tables": BlogTables

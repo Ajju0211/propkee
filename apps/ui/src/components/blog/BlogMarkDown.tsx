@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { useState } from 'react';
+import remarkBreaks from 'remark-breaks';
 
 export function BlogContent({ content }: { content: string }) {
   const isMobile = useIsMobile();
@@ -12,7 +13,6 @@ export function BlogContent({ content }: { content: string }) {
   /**
    * Convert table → accordion (MOBILE ONLY)
    */
-
   const AccordionRow = ({
     titleCell,
     contentCells,
@@ -123,18 +123,18 @@ export function BlogContent({ content }: { content: string }) {
     return React.createElement(
       `h${level}`,
       {
-        className: `blog-h${level} pb-[1.25rem]`,
+        className: `blog-h${level} whitespace-pre-wrap  pb-[1rem] blog-text-primary sm:blog-text-48 sm:pb-[1.25rem]`,
         id: createIdFromTitle(text),
       },
       props.children,
     );
   };
   return (
-    <div className="w-full h-full px-[1rem] lg:px-[2rem] py-[2.5rem] xl:py-[5.5rem] xl:px-[6.5rem] flex flex-col gap-[24px]">
+    <div className="w-full h-full whitespace-pre-wrap px-[1rem]   lg:px-[2rem] py-[2.5rem] xl:py-[5.5rem] xl:px-[6.5rem] flex flex-col">
       {' '}
       {/* 24px/1.5 rem gap*/}
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]} // tables, lists, markdown extras
+        remarkPlugins={[remarkGfm, remarkBreaks]} // tables, lists, markdown extras
         rehypePlugins={[rehypeRaw]} // allows HTML in markdown
         components={{
           // h1: (props) => <h1 className="blog-h1 pt-[0.5rem]" {...props} />,
@@ -149,28 +149,35 @@ export function BlogContent({ content }: { content: string }) {
           h4: headingRenderer(4),
           h5: headingRenderer(5),
           h6: headingRenderer(6),
-          span: (props) => <span className="blog-description pt-[0.5rem]" {...props} />,
-          p: (props) => <p className="blog-description pt-[0.5rem]" {...props} />,
+          span: (props) => (
+            <span
+              className="blog-description whitespace-pre-wrap pb-[0.5rem]"
+              {...props}
+            />
+          ),
+          p: (props) => (
+            <p className="blog-description whitespace-pre-wrap pb-[0.5rem]" {...props} />
+          ),
           ul: (props) => (
             <ul
-              className="mt-4 mb-4 pl-6 list-disc list-inside blog-description "
+              className="mt-4 mb-4 xl:pl-6 pl-3 list-disc whitespace-pre-wrap list-inside blog-description "
               {...props}
             />
           ),
           ol: (props) => (
             <ol
-              className="mt-4 mb-4 pl-6 list-decimal list-inside blog-description "
+              className="mt-4 mb-4 xl:pl-6 pl-3 list-decimal whitespace-pre-wrap list-inside blog-description "
               {...props}
             />
           ),
-          li: (props) => <li className="mb-1 pl-1" {...props} />,
+          li: (props) => <li className="mb-1 whitespace-pre-wrap" {...props} />,
           table: (props) =>
             isMobile ? (
               TableToAccordion(props)
             ) : (
-              <div className="overflow-x-auto w-full my-6 rounded-[1.5rem] border bg-white border-[#EAEAEA]">
+              <div className="overflow-x-auto w-full my-6 whitespace-pre-wrap rounded-[1.5rem] border bg-white border-[#EAEAEA]">
                 <table
-                  className="w-full rounded-[1.5rem] border bg-white border-[#EAEAEA]"
+                  className="w-full rounded-[1.5rem] border whitespace-pre-wrap bg-white border-[#EAEAEA]"
                   {...props}
                 />
               </div>
@@ -179,11 +186,13 @@ export function BlogContent({ content }: { content: string }) {
           // desktop-only styling
           tr: (props) => (!isMobile ? <tr {...props} /> : <>{props.children}</>),
           thead: (props) =>
-            !isMobile ? <thead className="bg-[#BF8B50]" {...props} /> : null,
+            !isMobile ? (
+              <thead className="bg-[#BF8B50] text-white blog-subTitle" {...props} />
+            ) : null,
           th: (props) =>
             !isMobile ? (
               <th
-                className="md:blog-subTitle text-[20px] text-start md:min-h-[4rem] py-[1rem] px-[1.5rem] border-[2px] border-[#EAEBF0] text-white"
+                className="md:blog-subTitle text-[20px] text-start md:min-h-[4rem] py-[1rem] px-[1.5rem] border-[2px] border-[#EAEBF0] md:text-white"
                 {...props}
               />
             ) : null,

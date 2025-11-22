@@ -30,18 +30,6 @@
       "repeatable": false,
       "component": "blog.contant-section"
     },
-    "blog_content_rich_text": {
-      "displayName": "blog_content_rich_text",
-      "type": "component",
-      "repeatable": true,
-      "component": "blog.blog-content-rich-text"
-    },
-    "blogs_faqs": {
-      "displayName": "FAQ ",
-      "type": "component",
-      "repeatable": false,
-      "component": "blog.faq"
-    },
     "blog_content": {
       "type": "customField",
       "options": {
@@ -53,6 +41,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::blog.blog"
+    },
+    "blog_faqs": {
+      "displayName": "blog_faqs",
+      "type": "component",
+      "repeatable": false,
+      "component": "blog.blog-faqs"
     }
   }
 }

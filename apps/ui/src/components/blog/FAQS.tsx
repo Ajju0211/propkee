@@ -6,6 +6,7 @@ interface FAQSProps {
 }
 
 function FAQS({ data }: FAQSProps) {
+  if (data?.faqs?.length > 0) return;
   return (
     <div className="flex py-[3.5rem] h-full lg:min-h-[67.75rem] flex-col px-[1rem]  lg:px-[2rem] xl:px-[6.5rem] blog-bg-color-f4 gap-[16px]">
       <p className="blog-title">FAQs</p>

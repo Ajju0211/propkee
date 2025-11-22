@@ -159,13 +159,13 @@ html.lenis body {
     --text-blog-h2-size: 1.5rem;
     --text-blog-h2-line-height: 1.9rem;
 
-    --text-blog-subtitle-size: 1.25rem;
+    --text-blog-subtitle-size: 1.125rem;
     --text-blog-subtitle-line-height: 1.7rem;
 
     --text-blog-description-size: 1rem; /* Slightly smaller */
     --text-blog-description-line-height: 155%;
 
-    --text-blog-smalltitle-size: 1rem; /* 1rem → 0.75rem (12px) */
+    --text-blog-smalltitle-size: 0.75rem; /* 1rem → 0.75rem (12px) */
     --text-blog-smalltitle-line-height: 125%;
 
     --text-blog-p-size: 1rem; /* 1.125rem → 1rem */

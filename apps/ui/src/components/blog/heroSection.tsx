@@ -70,7 +70,7 @@ function HeroSection({ blog }: HeroSectionProps) {
               <p className="blog-smallHeading text-blog-color-70 w-[15rem]">
                 AUTHOR NAME:
               </p>
-              <span className="blog-subTitle font-instrument-sans-600 blog-text-primary">
+              <span className="blog-subTitle min-w-[250px] font-instrument-sans-600 md:font-instrument-sans-600 text-[16px] md:blog-subTitle blog-text-primary sm:blog-text-primary md:blog-text-primary">
                 {blog?.author?.name}
               </span>
             </div>
@@ -79,7 +79,7 @@ function HeroSection({ blog }: HeroSectionProps) {
               <span className="blog-smallHeading w-[15rem] uppercase text-blog-color-70">
                 Date OF PUBLISHING:
               </span>
-              <span className="blog-subTitle font-instrument-sans-600 blog-text-primary">
+              <span className="blog-subTitle min-w-[250px] font-instrument-sans-600 md:font-instrument-sans-600 text-[16px] md:blog-subTitle blog-text-primary sm:blog-text-primary md:blog-text-primary">
                 {blog?.author?.dateOfPublishing}
               </span>
             </div>
@@ -88,7 +88,7 @@ function HeroSection({ blog }: HeroSectionProps) {
               <span className="blog-smallHeading w-[15rem] uppercase text-blog-color-70">
                 Estimated Reading Time:
               </span>
-              <span className="blog-subTitle font-instrument-sans-600 blog-text-primary">
+              <span className="blog-subTitle min-w-[250px] font-instrument-sans-600 md:font-instrument-sans-600 text-[16px] md:blog-subTitle blog-text-primary sm:blog-text-primary md:blog-text-primary">
                 {blog.author.estimatedReadingTime}
               </span>
             </div>

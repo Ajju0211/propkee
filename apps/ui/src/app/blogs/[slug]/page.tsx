@@ -20,7 +20,7 @@ import {
 } from '@/types/blog-types';
 import { formatReadableDate } from '@/utils/formateDate';
 import httpClient from '@/api/httpClient';
-import BlogRichText from '@/components/blog/BlogRichText';
+// import BlogRichText from '@/components/blog/BlogRichText';
 import HeroSectionSkeleton from '@/components/blog/skeleton/HeroSectionSkeleton';
 import ContentSkeleton from '@/components/blog/skeleton/ContentSkeletonProps';
 import BlogSkeleton from '@/components/blog/skeleton/BlogSkeletonStatic';
@@ -59,7 +59,7 @@ export default function Home() {
       slug: item?.slug,
       date: formatReadableDate(item?.createdAt, 'short'),
       title: item?.title,
-      image: `http://localhost:1337${item?.hero_section?.image?.url}`,
+      image: `${process.env.NEXT_PUBLIC_IMAGE_URL}${item?.hero_section?.image?.url}`,
     }));
     setRecentPost({
       postTitle: 'Recent Posts',
@@ -112,7 +112,7 @@ export default function Home() {
       },
       description: heroSection?.description,
       image: {
-        src: `http://localhost:1337${heroSection?.image?.url}`,
+        src: `${process.env.NEXT_PUBLIC_IMAGE_URL}${heroSection?.image?.url}`,
         alt: `image`,
       },
     };
@@ -133,14 +133,15 @@ export default function Home() {
   };
 
   const filterFAQS = (data: any) => {
-    const faqsData = data?.blogs_faqs;
-    const faqs = faqsData?.faq_content?.map((item: any) => ({
+    const faqsData = data?.blog_faqs;
+    const faqs = faqsData?.faq?.map((item: any) => ({
       question: item?.question,
       answer: item?.answer,
     }));
 
     return {
-      title: faqsData?.heading || '',
+      title:
+        faqsData?.heading || 'FAQS ABOUT AREAS TO RENT APARTMENTS IN DISCOVERY GARDENS',
       faqs: faqs,
     };
   };
@@ -298,7 +299,7 @@ export default function Home() {
         slug: item?.slug,
         date: formatReadableDate(item?.createdAt),
         title: item?.title,
-        image: `http://localhost:1337${item?.hero_section?.image?.url}`,
+        image: `${process.env.NEXT_PUBLIC_IMAGE_URL}${item?.hero_section?.image?.url}`,
         description: item?.hero_section?.description,
       })) || [];
     return trendingPosts;
