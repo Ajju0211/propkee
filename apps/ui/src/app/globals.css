@@ -1,5 +1,31 @@
 @import 'tailwindcss';
 
+/* Lenis Smooth Scroll Styles */
+html {
+  scroll-behavior: auto !important;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 /* instrument-sans-regular */
 @font-face {
   font-family: 'Instrument-Sans-400';
@@ -346,4 +372,59 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
+}
+
+.custom-scrollbar {
+  /* Ensures content flows horizontally */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  /* Firefox fallback */
+  scrollbar-width: thin;
+  scrollbar-color: #70652f #fff5eb;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 12px; /* Thickness of the bar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #fff5eb; /* The Light Cream background */
+  border-radius: 10px; /* Fully rounded pill shape */
+  margin: 0px; /* Optional: adds space on the ends */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #70652f; /* The Olive Brown handle */
+  border-radius: 10px; /* Fully rounded pill shape */
+
+  border: 300px solid #fff5eb;
+}
+
+/* Add these at the top, before other styles */
+html {
+  scroll-behavior: auto !important;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+  overflow: visible;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

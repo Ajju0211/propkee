@@ -52,7 +52,7 @@ export function BlogContent({ content }: { content: string }) {
           ),
           li: (props) => <li className="mb-1 pl-1" {...props} />,
           table: (props) => (
-            <div className="overflow-x-auto w-full my-6 rounded-[1.5rem] border bg-white border-[#EAEAEA]">
+            <div className="overflow-x-auto overflow-y-hidden w-full my-6 rounded-[1.5rem] border bg-white border-[#EAEAEA] custom-scrollbar">
               <table
                 className="w-full rounded-[1.5rem] border bg-white border-[#EAEAEA]"
                 {...props}
@@ -69,7 +69,7 @@ export function BlogContent({ content }: { content: string }) {
           ),
           td: (props) => (
             <td
-              className="blog-description  text-start px-[1.5rem] h-full md:min-h-[4.625rem] py-[0.75rem] border-[2px] border-[#EAEBF0] font-instrument-sans-500  text-[#5F6D7E]"
+              className="blog-description text-start px-[1.5rem] h-full md:min-h-[4.625rem] py-[0.75rem] border-[2px] border-[#EAEBF0] font-instrument-sans-500 text-[#5F6D7E]"
               {...props}
             />
           ),

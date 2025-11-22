@@ -26,7 +26,7 @@ function SuggestionBlog({ otherPosts }: { otherPosts: PostItem[] }) {
             <div
               key={idx}
               onClick={() => router.push(`/blogs/${item?.slug}`)}
-              className="flex p-[0.75rem] flex-col w-full sm:min-w-[18.1406rem] h-auto min-h-[20rem] gap-[0.75rem] items-center border-[2px] justify-start rounded-[1.5rem] border-[#E9E9E9] bg-white cursor-pointer hover:shadow-lg transition-shadow"
+              className="flex p-[0.75rem] flex-col w-full sm:max-w-[18.1406rem] h-auto md:max-h-[20rem] gap-[0.75rem] items-center border-[2px] justify-start rounded-[1.5rem] border-[#E9E9E9] bg-white cursor-pointer hover:shadow-lg transition-shadow"
             >
               <div className="w-full relative overflow-hidden h-[8.75rem] rounded-[1.125rem] flex-shrink-0">
                 <img

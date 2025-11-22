@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 
 import './globals.css';
 import './utiles.css';
+import LenisProvider from '@/components/global/provider/lenis-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );
