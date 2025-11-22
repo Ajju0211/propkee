@@ -70,7 +70,7 @@ export function BlogContent({ content }: { content: string }) {
               <div key={idx} className="py-2 relative  blog-description  ">
                 {cell}
                 {contentCells.length - 1 !== idx && (
-                  <div className="w-full h-[1px] bg-[#a8a8a8] rounded-lg  my-[12px]" />
+                  <div className="w-full h-[1px] bg-[#a8a8a8] rounded-lg opacity-60 my-[12px]" />
                 )}
               </div>
             ))}
@@ -85,18 +85,18 @@ export function BlogContent({ content }: { content: string }) {
     const tbody = childrenArray.find(
       (child): child is React.ReactElement =>
         React.isValidElement(child) && child.type === 'tbody',
-    );
+    ) as any;
 
     if (!tbody) return null;
 
-    const rows = React.Children.toArray(tbody.props.children);
+    const rows = React.Children.toArray(tbody.props.children) as any;
 
     return (
       <div className="my-4 flex flex-col items-stretch gap-[1.12rem] justify-start  rounded-[0.75rem] bg-[#F1EEEB] overflow-hidden">
         {rows.map((row: any, rowIndex: number) => {
           if (!React.isValidElement(row)) return null;
 
-          const cells = React.Children.toArray(row.props.children);
+          const cells = React.Children.toArray((row as any).props.children);
           const titleCell = cells[0];
           const contentCells = cells.slice(1);
 
@@ -106,10 +106,10 @@ export function BlogContent({ content }: { content: string }) {
               rows={rows}
               key={rowIndex}
               titleCell={
-                React.isValidElement(titleCell) ? titleCell.props.children : null
+                React.isValidElement(titleCell) ? (titleCell as any).props.children : null
               }
               contentCells={contentCells.map((el: any) =>
-                React.isValidElement(el) ? el.props.children : null,
+                React.isValidElement(el) ? (el as any).props.children : null,
               )}
             />
           );

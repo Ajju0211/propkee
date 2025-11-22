@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <>
-      <header className="w-full py-4 flex items-center justify-between px-4 lg:px-0">
+      <header className="w-full py-4 flex items-center justify-between sm:px-4">
         {/* Logo */}
         <div className="h-[32px] w-[121px] sm:h-[40px] sm:w-[150px] flex-shrink-0">
           <Image
